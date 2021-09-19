@@ -25,4 +25,5 @@
     <string name="el_usuario_o_clave_ingresados_son_invalidos">El Usuario o Clave ingresados son invalidos</string>
     <string name="iniciar_sesion">Iniciar Sesion</string>
     <string name="Perfil">Perfil</string>
+    <string name="Inmuebles" />
 </resources>

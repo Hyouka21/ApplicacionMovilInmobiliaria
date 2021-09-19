@@ -13,5 +13,10 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/Perfil"
             />
+        <item
+            android:id="@+id/nav_inmueble"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Inmuebles"
+            />
     </group>
 </menu>
