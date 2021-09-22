@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.sosa.trabajofinalsosagaston.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="Localizacion"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/nav_perfil"
@@ -32,6 +32,24 @@
         <action
             android:id="@+id/action_inmuebleDetalleFragment_to_nav_inmueble"
             app:destination="@id/nav_inmueble" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_inquilino"
+        android:name="com.sosa.trabajofinalsosagaston.ui.inquilino.InquilinoFragment"
+        android:label="Inmuebles alquilados"
+        tools:layout="@layout/inquilino_fragment">
+        <action
+            android:id="@+id/action_nav_inquilino_to_inquilinoDetalleFragment"
+            app:destination="@id/inquilinoDetalleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inquilinoDetalleFragment"
+        android:name="com.sosa.trabajofinalsosagaston.ui.inquilino.InquilinoDetalleFragment"
+        android:label="Inquilino"
+        tools:layout="@layout/inquilino_detalle_fragment">
+        <action
+            android:id="@+id/action_inquilinoDetalleFragment_to_nav_inquilino"
+            app:destination="@id/nav_inquilino" />
     </fragment>
 
 </navigation>

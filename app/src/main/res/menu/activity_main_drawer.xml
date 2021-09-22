@@ -18,5 +18,10 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Inmuebles"
             />
+        <item
+            android:id="@+id/nav_inquilino"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Inquilinos"
+            />
     </group>
 </menu>

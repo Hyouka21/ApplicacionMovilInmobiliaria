@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.sosa.trabajofinalsosagaston.R;
 import com.sosa.trabajofinalsosagaston.databinding.InmuebleDetalleFragmentBinding;
 import com.sosa.trabajofinalsosagaston.modelo.Inmueble;
@@ -33,9 +35,9 @@ public class InmuebleDetalleFragment extends Fragment {
         binding = InmuebleDetalleFragmentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         mViewModel = new ViewModelProvider(this).get(InmuebleDetalleViewModel.class);
-        Inmueble i = (Inmueble) getArguments().getSerializable("inmueble");
 
-        mViewModel.setInmueble(i);
+
+
         mViewModel.getInmueble().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
             @Override
             public void onChanged(Inmueble inmueble) {
@@ -46,12 +48,21 @@ public class InmuebleDetalleFragment extends Fragment {
                 binding.TVDireccionDI.setText("Dirección:\n"+inmueble.getDireccion());
                 binding.TVPrecioDI.setText("Precio:\n$"+inmueble.getPrecio());
                 binding.TVTipoDI.setText("Tipo:\n"+inmueble.getTipo());
+                Glide.with(getContext())//contexto
+                        .load(inmueble.getImagen())//url de la imagen
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)// guarda en el cache
+                        .into(binding.ImgVDI); // se encarga de setear la imagen
                 binding.TVUsoDI.setText("Uso:\n"+inmueble.getUso());
-
+                binding.CBEstadoDI.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mViewModel.guardarCambios(binding.CBEstadoDI.isChecked());
+                    }
+                });
             }
         });
 
-
+        mViewModel.setInmueble(getArguments());
         return root;
     }
 
