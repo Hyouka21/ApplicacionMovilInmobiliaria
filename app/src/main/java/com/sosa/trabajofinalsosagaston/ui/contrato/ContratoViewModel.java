@@ -1,6 +1,5 @@
-package com.sosa.trabajofinalsosagaston.ui.inquilino;
+package com.sosa.trabajofinalsosagaston.ui.contrato;
 
-import android.util.Log;
 import android.view.View;
 
 import androidx.lifecycle.MutableLiveData;
@@ -11,11 +10,11 @@ import com.sosa.trabajofinalsosagaston.request.ApiClient;
 
 import java.util.ArrayList;
 
-public class InquilinoViewModel extends ViewModel {
+public class ContratoViewModel extends ViewModel {
     MutableLiveData<ArrayList<Inmueble>> lista ;
     MutableLiveData<Integer> visibilidad;
     ApiClient api;
-    public InquilinoViewModel(){
+    public ContratoViewModel(){
         lista = new MutableLiveData<>();
         visibilidad = new MutableLiveData<>();
         api = ApiClient.getApi();

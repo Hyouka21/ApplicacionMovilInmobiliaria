@@ -25,6 +25,7 @@ public class InquilinoDetalleViewModel extends ViewModel {
 
     public void setInquilino(Bundle bundle) {
         i = (Inmueble) bundle.getSerializable("inmueble");
+
         inquilino.setValue(api.obtenerInquilino(i));
     }
 }

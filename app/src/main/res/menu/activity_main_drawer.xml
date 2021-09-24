@@ -6,22 +6,33 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:icon="@drawable/inicioicono"
+            android:title="@string/inicio" />
         <item
             android:id="@+id/nav_perfil"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/iconoperfil"
             android:title="@string/Perfil"
             />
         <item
             android:id="@+id/nav_inmueble"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Inmuebles"
+            android:icon="@drawable/iconoinmueble"
+            android:title="@string/inmuebles"
             />
         <item
             android:id="@+id/nav_inquilino"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Inquilinos"
+            android:icon="@drawable/iconoinquilino"
+            android:title="@string/inquilinos"
+            />
+
+        <item
+            android:id="@+id/nav_contrato"
+            android:icon="@drawable/iconocontrato"
+            android:title="@string/contratos"
+            />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/iconologout"
+            android:title="Cerrar Sesion"
             />
     </group>
 </menu>

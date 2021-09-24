@@ -27,9 +27,7 @@ import com.sosa.trabajofinalsosagaston.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
     private LatLng Inmobiliaria = new LatLng(-33.28877108077907, -66.29817724323112);
-    MapView mMapView;
-
-
+    private MapView mMapView;
     private GoogleMap map;
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;

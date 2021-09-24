@@ -26,4 +26,9 @@
     <string name="iniciar_sesion">Iniciar Sesion</string>
     <string name="Perfil">Perfil</string>
     <string name="Inmuebles" />
+
+    <string name="inicio">Inicio</string>
+    <string name="inmuebles">Inmuebles</string>
+    <string name="inquilinos">Inquilinos</string>
+    <string name="contratos">Contratos</string>
 </resources>

@@ -51,5 +51,35 @@
             android:id="@+id/action_inquilinoDetalleFragment_to_nav_inquilino"
             app:destination="@id/nav_inquilino" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_contrato"
+        android:name="com.sosa.trabajofinalsosagaston.ui.contrato.ContratoFragment"
+        android:label="Contratos vigentes"
+        tools:layout="@layout/contrato_fragment" >
+        <action
+            android:id="@+id/action_nav_contrato_to_contratoDetalleFragment"
+            app:destination="@id/contratoDetalleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contratoDetalleFragment"
+        android:name="com.sosa.trabajofinalsosagaston.ui.contrato.ContratoDetalleFragment"
+        android:label="Contrato"
+        tools:layout="@layout/contrato_detalle_fragment">
+        <action
+            android:id="@+id/action_contratoDetalleFragment_to_nav_contrato"
+            app:destination="@id/nav_contrato" />
+        <action
+            android:id="@+id/action_contratoDetalleFragment_to_pagoFragment"
+            app:destination="@id/pagoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pagoFragment"
+        android:name="com.sosa.trabajofinalsosagaston.ui.pago.PagoFragment"
+        android:label="Detalles de pagos"
+        tools:layout="@layout/pago_fragment">
+        <action
+            android:id="@+id/action_pagoFragment_to_contratoDetalleFragment"
+            app:destination="@id/contratoDetalleFragment" />
+    </fragment>
 
 </navigation>

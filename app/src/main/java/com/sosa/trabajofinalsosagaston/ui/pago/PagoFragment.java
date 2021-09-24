@@ -1,4 +1,4 @@
-package com.sosa.trabajofinalsosagaston.ui.inquilino;
+package com.sosa.trabajofinalsosagaston.ui.pago;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -17,25 +17,27 @@ import android.view.ViewGroup;
 
 import com.sosa.trabajofinalsosagaston.R;
 import com.sosa.trabajofinalsosagaston.adapter.InquilinoAdapter;
+import com.sosa.trabajofinalsosagaston.adapter.PagoAdapter;
 import com.sosa.trabajofinalsosagaston.modelo.Inmueble;
+import com.sosa.trabajofinalsosagaston.modelo.Pago;
 
 import java.util.ArrayList;
 
-public class InquilinoFragment extends Fragment {
-    private RecyclerView RVInquilino;
-    private InquilinoAdapter inquilinoAdapter;
-    private InquilinoViewModel mViewModel;
+public class PagoFragment extends Fragment {
 
-    public static InquilinoFragment newInstance() {
-        return new InquilinoFragment();
+    private PagoViewModel mViewModel;
+    private RecyclerView RVPago;
+    private PagoAdapter pagoAdapter;
+    public static PagoFragment newInstance() {
+        return new PagoFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.inquilino_fragment, container, false);
-        RVInquilino = (RecyclerView) root.findViewById(R.id.RVInquilino);
-        mViewModel = new ViewModelProvider(this).get(InquilinoViewModel.class);
+        View root = inflater.inflate(R.layout.pago_fragment, container, false);
+        mViewModel = new ViewModelProvider(this).get(PagoViewModel.class);
+        RVPago = (RecyclerView) root.findViewById(R.id.RVPago);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                 getContext(),
                 LinearLayoutManager.VERTICAL,
@@ -44,19 +46,19 @@ public class InquilinoFragment extends Fragment {
         mViewModel.getVisibilidad().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                root.findViewById(R.id.TVIFEs).setVisibility(integer);
+                root.findViewById(R.id.TVEstadoPago).setVisibility(integer);
             }
         });
-        mViewModel.getLista().observe(getViewLifecycleOwner(), new Observer<ArrayList<Inmueble>>() {
+        mViewModel.getLista().observe(getViewLifecycleOwner(), new Observer<ArrayList<Pago>>() {
             @Override
-            public void onChanged(ArrayList<Inmueble> inmuebles) {
-                RVInquilino.setLayoutManager(linearLayoutManager);
-                inquilinoAdapter = new InquilinoAdapter(inmuebles,root,getLayoutInflater());
+            public void onChanged(ArrayList<Pago> pagos) {
+                RVPago.setLayoutManager(linearLayoutManager);
+                pagoAdapter = new PagoAdapter(pagos,root,getLayoutInflater());
 
-                RVInquilino.setAdapter(inquilinoAdapter);
+                RVPago.setAdapter(pagoAdapter);
             }
         });
-        mViewModel.setInmueblesAlquilados();
+        mViewModel.setPagos(getArguments());
         return root;
     }
 

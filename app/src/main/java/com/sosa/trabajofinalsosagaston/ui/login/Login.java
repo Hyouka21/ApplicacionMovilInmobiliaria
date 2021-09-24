@@ -5,8 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +27,8 @@ import com.sosa.trabajofinalsosagaston.R;
 
 import com.sosa.trabajofinalsosagaston.modelo.Propietario;
 
+import java.util.List;
+
 
 public class Login extends AppCompatActivity {
 private LoginViewModel loginViewModel;
@@ -26,6 +37,9 @@ private EditText emailE;
 private EditText claveE;
 private Button iniciarB;
 private TextView mensaje;
+    private SensorManager sensorManager;
+    private LeeSensor leeSensor;
+    List<Sensor> listaSensores;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +64,30 @@ private TextView mensaje;
             startActivity(intent);
             }
         });
+        leeSensor = new LeeSensor();
+        //Obtener la lista de sensores disponibles
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        listaSensores = sensorManager.getSensorList(Sensor.TYPE_GYROSCOPE);
+        if(listaSensores.size()>0) {
+            sensorManager.registerListener(leeSensor, listaSensores.get(0), SensorManager.SENSOR_DELAY_GAME);
+        }
+        loginViewModel.getLlamar().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+
+
+                Intent llamada = new Intent(Intent.ACTION_CALL);
+                llamada.setData(Uri.parse("tel:911"));
+                startActivity(llamada);
+
+            }
+        });
+        loginViewModel.getCordenada().observe(this, new Observer<LoginViewModel.Coordenada>() {
+            @Override
+            public void onChanged(LoginViewModel.Coordenada coordenada) {
+                loginViewModel.controlador(coordenada);
+            }
+        });
 
 
     }
@@ -59,5 +97,37 @@ private TextView mensaje;
         claveE = findViewById(R.id.ETClave);
         iniciarB =findViewById(R.id.BTIniciar);
         mensaje = findViewById(R.id.TVMensaje);
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.M
+                && checkSelfPermission(android.Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(new String[]{Manifest.permission.CALL_PHONE},1000);
+        }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(leeSensor, listaSensores.get(0), SensorManager.SENSOR_DELAY_GAME);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        sensorManager.unregisterListener(leeSensor);
+    }
+private class LeeSensor implements SensorEventListener {
+
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+
+        loginViewModel.cordenadas(sensorEvent.values[0],sensorEvent.values[1]);
+
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
+}
 }
