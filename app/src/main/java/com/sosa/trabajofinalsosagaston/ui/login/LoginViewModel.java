@@ -42,10 +42,17 @@ public class LoginViewModel extends ViewModel {
         }
     }
     public void controlador(Coordenada coor){
-        if((coor.cordenadaX > 4 || coor.cordenadaX< -4)){
+        int contadorA=0;
+        int contadorB=0;
+        if(coor.cordenadaX > 7 && contadorA<8){
+            contadorA++;
             contador++;
         }
-        if(contador>4){
+        if(coor.cordenadaX< -7&& contadorB<8){
+            contadorB++;
+            contador++;
+        }
+        if(contador==16){
             contador=0;
             estado=true;
             cordenada.setValue(new Coordenada(0,0));

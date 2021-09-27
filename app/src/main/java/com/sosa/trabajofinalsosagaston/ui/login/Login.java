@@ -77,7 +77,7 @@ private TextView mensaje;
 
 
                 Intent llamada = new Intent(Intent.ACTION_CALL);
-                llamada.setData(Uri.parse("tel:911"));
+                llamada.setData(Uri.parse("tel://911"));
                 startActivity(llamada);
 
             }

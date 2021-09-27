@@ -1,10 +1,15 @@
 package com.sosa.trabajofinalsosagaston;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ImageView;
@@ -13,6 +18,7 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -25,6 +31,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.sosa.trabajofinalsosagaston.databinding.ActivityMainBinding;
 import com.sosa.trabajofinalsosagaston.modelo.Propietario;
 import com.sosa.trabajofinalsosagaston.request.ApiClient;
+import com.sosa.trabajofinalsosagaston.ui.login.Login;
 import com.sosa.trabajofinalsosagaston.ui.login.LoginViewModel;
 import com.sosa.trabajofinalsosagaston.ui.perfil.PerfilViewModel;
 
@@ -56,12 +63,24 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_perfil,R.id.nav_inmueble,R.id.nav_inquilino,R.id.nav_contrato)
+                R.id.nav_home, R.id.nav_perfil,R.id.nav_inmueble,R.id.nav_inquilino,R.id.nav_contrato,R.id.nav_logout)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        binding.navView.getMenu().findItem(R.id.nav_logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if(item.getItemId() == R.id.nav_logout){
+                    Alerta alerta = new Alerta();
+                    alerta.show(getSupportFragmentManager(),"about");
+                    return true;
+                }else{
+                return false;}
+            }
+        });
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
 
@@ -106,4 +125,5 @@ public class MainActivity extends AppCompatActivity {
         //finishAffinity();//esto cierra la aplicacion completa
 
     }
+
 }
