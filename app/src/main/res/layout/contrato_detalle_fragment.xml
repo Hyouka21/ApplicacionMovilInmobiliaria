@@ -5,13 +5,15 @@
     android:id="@+id/frameLayout6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.contrato.ContratoDetalleFragment" >
+    android:background="#FAD194"
+    tools:context=".ui.contrato.ContratoDetalleFragment">
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Informacion del contrato"
+        android:textColor="#050505"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,6 +26,7 @@
         android:layout_marginTop="20dp"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="#050505"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +39,7 @@
         android:layout_marginTop="20dp"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="#050505"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -49,6 +53,7 @@
         android:layout_marginTop="20dp"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="#050505"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -61,11 +66,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#050505"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVConFechaFin"
-        android:textAlignment="center" />
+        app:layout_constraintTop_toBottomOf="@+id/TVConFechaFin" />
 
     <TextView
         android:id="@+id/TvConInqNom"
@@ -74,6 +80,7 @@
         android:layout_marginTop="20dp"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="#050505"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -91,7 +98,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TvConInqNom" />
+        app:layout_constraintTop_toBottomOf="@+id/TvConInqNom"
+        android:textColor="#050505" />
 
     <Button
         android:id="@+id/BTPagos"

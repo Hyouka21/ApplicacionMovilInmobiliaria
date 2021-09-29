@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#3F51B5"
-    app:cardCornerRadius="20dp"
+    app:cardCornerRadius="60dp"
     app:cardElevation="10dp"
     app:contentPadding="10dp">
 
@@ -14,9 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#2196F3"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="10dp"
-        app:contentPadding="10dp">
+        >
 
         <TextView
             android:id="@+id/TVCVDetalles"
@@ -24,20 +22,20 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:background="#FFFCFC"
+            android:padding="10dp"
             android:text="TextView"
             android:textColor="#070707"
             android:textSize="24sp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="10dp"
-            app:contentPadding="10dp"
+            app:circularflow_angles="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+
         <ImageView
             android:id="@+id/IVCVInmueble"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             app:layout_constraintBottom_toTopOf="@+id/TVCVDetalles"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -5,7 +5,8 @@
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.inquilino.InquilinoFragment" >
+    android:background="#EFF6A7"
+    tools:context=".ui.inquilino.InquilinoFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVInquilino"
@@ -19,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sin datos"
+        android:textColor="#050505"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

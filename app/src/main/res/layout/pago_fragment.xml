@@ -5,7 +5,8 @@
     android:id="@+id/frameLayout7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.pago.PagoFragment" >
+    android:background="#007478"
+    tools:context=".ui.pago.PagoFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVPago"
@@ -19,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="#000000"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

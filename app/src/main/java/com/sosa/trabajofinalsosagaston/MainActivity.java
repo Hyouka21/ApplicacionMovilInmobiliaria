@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void iniciarHeader(){
         NavigationView navigationView = binding.navView;
         View header = navigationView.getHeaderView(0);

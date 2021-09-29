@@ -115,7 +115,14 @@ private TextView mensaje;
         super.onStop();
         sensorManager.unregisterListener(leeSensor);
     }
-private class LeeSensor implements SensorEventListener {
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+    }
+
+    private class LeeSensor implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
