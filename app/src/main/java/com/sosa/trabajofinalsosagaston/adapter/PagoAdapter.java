@@ -14,13 +14,14 @@ import com.sosa.trabajofinalsosagaston.R;
 import com.sosa.trabajofinalsosagaston.modelo.Pago;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PagoAdapter extends RecyclerView.Adapter<PagoAdapter.MiViewHolder>{
-    private ArrayList<Pago> lista;
+    private List<Pago> lista;
     private View root ;
     private LayoutInflater inflater;
 
-    public PagoAdapter(ArrayList<Pago> lista, View root, LayoutInflater inflater) {
+    public PagoAdapter(List<Pago> lista, View root, LayoutInflater inflater) {
         this.lista = lista;
         this.root = root;
         this.inflater = inflater;

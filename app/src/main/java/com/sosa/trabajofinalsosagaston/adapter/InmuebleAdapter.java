@@ -22,13 +22,14 @@ import com.sosa.trabajofinalsosagaston.modelo.Inmueble;
 import com.sosa.trabajofinalsosagaston.ui.inmueble.InmuebleDetalleFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.MiViewHolder> {
-    private ArrayList<Inmueble> lista;
+    private List<Inmueble> lista;
     private View root ;
     private LayoutInflater inflater;
 
-    public InmuebleAdapter(ArrayList<Inmueble> lista, View root, LayoutInflater inflater) {
+    public InmuebleAdapter(List<Inmueble> lista, View root, LayoutInflater inflater) {
         this.lista = lista;
         this.root = root;
         this.inflater = inflater;

@@ -1,28 +1,50 @@
 package com.sosa.trabajofinalsosagaston.ui.login;
 
+import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.sosa.trabajofinalsosagaston.modelo.Propietario;
+import com.sosa.trabajofinalsosagaston.modelo.Token;
 import com.sosa.trabajofinalsosagaston.request.ApiClient;
 
-public class LoginViewModel extends ViewModel {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class LoginViewModel extends AndroidViewModel {
     private MutableLiveData<Propietario> propietario ;
+    private MutableLiveData<Token> tokenMD ;
     private MutableLiveData<Boolean> mensaje ;
     private MutableLiveData<Coordenada> cordenada;
     private MutableLiveData<Boolean> llamar ;
+    private Context context;
     private boolean estado =false;
     private int contador=0;
-    ApiClient api;
-    public LoginViewModel (){
+
+
+    public LoginViewModel(@NonNull Application application) {
+        super(application);
+        context = application.getApplicationContext();
         propietario =  new MutableLiveData<>();
         mensaje =  new MutableLiveData<>();
         cordenada =  new MutableLiveData<>();
-        llamar =  new MutableLiveData<>();
-        api = ApiClient.getApi();
+       llamar =  new MutableLiveData<>();
+        tokenMD = new MutableLiveData<>();
+
+    }
+
+
+    public MutableLiveData<Token> getTokenMD() {
+        return tokenMD;
     }
 
     public MutableLiveData<Boolean> getLlamar() {
@@ -82,16 +104,90 @@ public class LoginViewModel extends ViewModel {
         return mensaje;
     }
 
+    public void token(Token token){
 
-    public void iniciar(String email , String clave){
-       Propietario p = api.login(email.replace(" ",""),clave);
-       if(p!=null){
-           propietario.setValue(p);
+        Call<Propietario> callProp = ApiClient.getMyApiClient().obtenerUsuario("Bearer "+token.getToken());
+        callProp.enqueue(new Callback<Propietario>() {
+            @Override
+            public void onResponse(Call<Propietario> call, Response<Propietario> response) {
+                if (response.isSuccessful()) {
 
-       }else{
-           mensaje.setValue(true);
-       }
+                    Propietario p = response.body();
+
+                    if (p != null) {
+
+                        propietario.postValue(p);
+
+                    } else {
+
+                    }
+                }else{
+                    mensaje.postValue(true);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Propietario> call, Throwable t) {
+                Log.d("paso","aqui paso2"+t.getMessage());
+            }
+        });
+
     }
+    public void iniciar(String email , String clave){
+        Call<Token> callTok = ApiClient.getMyApiClient().login(email,clave);
+
+        callTok.enqueue(new Callback<Token>() {
+            @Override
+            public void onResponse(Call<Token> call, Response<Token> response) {
+                if (response.isSuccessful()) {
+                    SharedPreferences sp = context.getSharedPreferences("datos",0);
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putString("token", "Bearer " + response.body().getToken());
+                    editor.commit();
+                    tokenMD.postValue(response.body());
+
+                }
+            }
+                @Override
+                public void onFailure(Call<Token> call, Throwable t) {
+                    Log.d("paso3",t.getMessage());
+                }
+            });
+    }
+
+    public void inicioAutomatico() {
+        SharedPreferences sp = context.getSharedPreferences("datos",0);
+        String token = sp.getString("token","-1");
+        if(token!=null) {
+            Call<Propietario> callProp = ApiClient.getMyApiClient().obtenerUsuario(token);
+            callProp.enqueue(new Callback<Propietario>() {
+                @Override
+                public void onResponse(Call<Propietario> call, Response<Propietario> response) {
+                    if (response.isSuccessful()) {
+
+                        Propietario p = response.body();
+
+                        if (p != null) {
+
+                            propietario.postValue(p);
+
+                        } else {
+
+                        }
+                    }else {
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Propietario> call, Throwable t) {
+                    Log.d("paso", "aqui paso2" + t.getMessage());
+                }
+            });
+        }
+    }
+
+
     public class Coordenada {
         float cordenadaX;
         float cordenadaY;

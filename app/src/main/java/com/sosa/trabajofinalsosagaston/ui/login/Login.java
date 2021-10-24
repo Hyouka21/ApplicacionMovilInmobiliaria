@@ -26,25 +26,34 @@ import com.sosa.trabajofinalsosagaston.MainActivityViewModel;
 import com.sosa.trabajofinalsosagaston.R;
 
 import com.sosa.trabajofinalsosagaston.modelo.Propietario;
+import com.sosa.trabajofinalsosagaston.modelo.Token;
 
 import java.util.List;
 
 
 public class Login extends AppCompatActivity {
-private LoginViewModel loginViewModel;
-
-private EditText emailE;
-private EditText claveE;
-private Button iniciarB;
-private TextView mensaje;
+    private LoginViewModel loginViewModel;
+    private EditText emailE;
+    private EditText claveE;
+    private Button iniciarB;
+    private TextView mensaje;
     private SensorManager sensorManager;
     private LeeSensor leeSensor;
-    List<Sensor> listaSensores;
+    private List<Sensor> listaSensores;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        loginViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(LoginViewModel.class);
         inicializar();
+        loginViewModel.inicioAutomatico();
+        loginViewModel.getTokenMD().observe(this, new Observer<Token>() {
+            @Override
+            public void onChanged(Token token) {
+                loginViewModel.token(token);
+            }
+        });
         iniciarB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,7 +101,7 @@ private TextView mensaje;
 
     }
     public void inicializar(){
-        loginViewModel =new ViewModelProvider(this).get(LoginViewModel.class);;
+
         emailE = findViewById(R.id.ETEmail);
         claveE = findViewById(R.id.ETClave);
         iniciarB =findViewById(R.id.BTIniciar);

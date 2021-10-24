@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
@@ -19,6 +20,10 @@ import com.sosa.trabajofinalsosagaston.ui.login.Login;
             builder.setMessage("Esta seguro de cerrar sesion?")
                     .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
+                            SharedPreferences sp = getActivity().getApplicationContext().getSharedPreferences("datos",0);
+                            SharedPreferences.Editor ed= sp.edit();
+                            ed.clear();
+                            ed.commit();
                             Intent intent = new Intent(getActivity(), Login.class);
                             startActivity(intent);
                         }

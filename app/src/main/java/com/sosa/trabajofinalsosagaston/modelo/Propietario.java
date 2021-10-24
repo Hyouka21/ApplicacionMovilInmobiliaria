@@ -1,44 +1,48 @@
 package com.sosa.trabajofinalsosagaston.modelo;
 
+import androidx.annotation.NonNull;
+
+import com.sosa.trabajofinalsosagaston.R;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 public class Propietario implements Serializable {
 
-    private int id;
-    private Long dni;
+    private int idPropietario;
+    private String dni;
     private String nombre;
     private String apellido;
     private String email;
-    private String contraseña;
+    private String clave;
     private String telefono;
     private int avatar;
 
     public Propietario(){}
-    public Propietario(int id, Long dni, String nombre, String apellido, String email, String contraseña, String telefono, int avatar) {
-        this.id = id;
+    public Propietario(int id, String dni, String nombre, String apellido, String email, String clave, String telefono, int avatar) {
+        this.idPropietario = id;
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
-        this.contraseña = contraseña;
+        this.clave = clave;
         this.telefono = telefono;
         this.avatar=avatar;
     }
 
     public int getId() {
-        return id;
+        return idPropietario;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.idPropietario = id;
     }
 
-    public Long getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(Long dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -66,12 +70,12 @@ public class Propietario implements Serializable {
         this.email = email;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getClave() {
+        return clave;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
     public String getTelefono() {
@@ -83,7 +87,10 @@ public class Propietario implements Serializable {
     }
 
     public int getAvatar() {
-        return avatar;
+        if(avatar==0){
+            avatar = R.drawable.juan;
+        }
+        return R.drawable.juan;
     }
 
     public void setAvatar(int avatar) {
@@ -95,11 +102,17 @@ public class Propietario implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Propietario that = (Propietario) o;
-        return id == that.id;
+        return idPropietario == that.idPropietario;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return getAvatar() + nombre + apellido;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(idPropietario);
     }
 }

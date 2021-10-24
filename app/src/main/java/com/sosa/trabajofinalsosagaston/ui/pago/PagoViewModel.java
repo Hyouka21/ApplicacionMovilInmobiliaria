@@ -1,8 +1,14 @@
 package com.sosa.trabajofinalsosagaston.ui.pago;
 
+import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.icu.lang.UProperty;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -12,32 +18,59 @@ import com.sosa.trabajofinalsosagaston.modelo.Pago;
 import com.sosa.trabajofinalsosagaston.request.ApiClient;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class PagoViewModel extends ViewModel {
-    MutableLiveData<ArrayList<Pago>> lista ;
-    MutableLiveData<Integer> visibilidad;
-    ApiClient api;
-    public PagoViewModel(){
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class PagoViewModel extends AndroidViewModel {
+    private MutableLiveData<List<Pago>> lista ;
+    private MutableLiveData<Integer> visibilidad;
+    private Context context;
+
+    public PagoViewModel(@NonNull Application application) {
+        super(application);
         lista = new MutableLiveData<>();
         visibilidad = new MutableLiveData<>();
-        api = ApiClient.getApi();
+
+        context = application.getApplicationContext();
     }
+
 
     public MutableLiveData<Integer> getVisibilidad() {
         return visibilidad;
     }
 
-    public MutableLiveData<ArrayList<Pago>> getLista() {
+    public MutableLiveData<List<Pago>> getLista() {
         return lista;
     }
 
     public void setPagos(Bundle bundle){
         Contrato c = (Contrato) bundle.getSerializable("contrato");
-        if(api.obtenerPropiedadesAlquiladas().size() == 0){
-            visibilidad.setValue(View.VISIBLE);
-        }else {
-            visibilidad.setValue(View.INVISIBLE);
-            lista.setValue(api.obtenerPagos(c));
-        }
+        SharedPreferences sp = context.getSharedPreferences("datos",0);
+        String token = sp.getString("token","-1");
+        Call<List<Pago>> pag = ApiClient.getMyApiClient().obtenerPagos(token,c.getIdContrato());
+        pag.enqueue(new Callback<List<Pago>>() {
+            @Override
+            public void onResponse(Call<List<Pago>> call, Response<List<Pago>> response) {
+                if(response.isSuccessful()){
+                    if(response.body()!=null){
+                        visibilidad.setValue(View.INVISIBLE);
+                        lista.setValue(response.body());
+                    }else{
+                        visibilidad.setValue(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Pago>> call, Throwable t) {
+
+            }
+        });
+
+
+
     }
 }

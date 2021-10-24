@@ -19,13 +19,14 @@ import com.sosa.trabajofinalsosagaston.R;
 import com.sosa.trabajofinalsosagaston.modelo.Inmueble;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class InquilinoAdapter extends RecyclerView.Adapter<InquilinoAdapter.MiViewHolder>{
-    private ArrayList<Inmueble> lista;
+    private List<Inmueble> lista;
     private View root ;
     private LayoutInflater inflater;
 
-    public InquilinoAdapter(ArrayList<Inmueble> lista, View root, LayoutInflater inflater) {
+    public InquilinoAdapter(List<Inmueble> lista, View root, LayoutInflater inflater) {
         this.lista = lista;
         this.root = root;
         this.inflater = inflater;

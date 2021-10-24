@@ -22,6 +22,7 @@ import com.sosa.trabajofinalsosagaston.modelo.Inmueble;
 import com.sosa.trabajofinalsosagaston.modelo.Pago;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PagoFragment extends Fragment {
 
@@ -49,9 +50,9 @@ public class PagoFragment extends Fragment {
                 root.findViewById(R.id.TVEstadoPago).setVisibility(integer);
             }
         });
-        mViewModel.getLista().observe(getViewLifecycleOwner(), new Observer<ArrayList<Pago>>() {
+        mViewModel.getLista().observe(getViewLifecycleOwner(), new Observer<List<Pago>>() {
             @Override
-            public void onChanged(ArrayList<Pago> pagos) {
+            public void onChanged(List<Pago> pagos) {
                 RVPago.setLayoutManager(linearLayoutManager);
                 pagoAdapter = new PagoAdapter(pagos,root,getLayoutInflater());
 

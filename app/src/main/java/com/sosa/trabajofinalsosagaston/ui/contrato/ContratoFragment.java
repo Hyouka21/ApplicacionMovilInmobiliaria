@@ -18,8 +18,10 @@ import android.view.ViewGroup;
 import com.sosa.trabajofinalsosagaston.R;
 import com.sosa.trabajofinalsosagaston.adapter.ContratoAdapter;
 import com.sosa.trabajofinalsosagaston.modelo.Inmueble;
+import com.sosa.trabajofinalsosagaston.ui.login.LoginViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ContratoFragment extends Fragment {
     private RecyclerView RVContrato;
@@ -35,7 +37,7 @@ public class ContratoFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.contrato_fragment, container, false);
         RVContrato = (RecyclerView) root.findViewById(R.id.RVContrato);
-        mViewModel = new ViewModelProvider(this).get(ContratoViewModel.class);
+        mViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(ContratoViewModel.class);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                 getContext(),
                 LinearLayoutManager.VERTICAL,
@@ -47,9 +49,9 @@ public class ContratoFragment extends Fragment {
                 root.findViewById(R.id.TVConEstado).setVisibility(integer);
             }
         });
-        mViewModel.getLista().observe(getViewLifecycleOwner(), new Observer<ArrayList<Inmueble>>() {
+        mViewModel.getLista().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
             @Override
-            public void onChanged(ArrayList<Inmueble> inmuebles) {
+            public void onChanged(List<Inmueble> inmuebles) {
                 RVContrato.setLayoutManager(linearLayoutManager);
                 contratoAdapter = new ContratoAdapter(inmuebles,root,getLayoutInflater());
 

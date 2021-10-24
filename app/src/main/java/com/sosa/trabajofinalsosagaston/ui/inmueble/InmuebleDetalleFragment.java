@@ -20,6 +20,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.sosa.trabajofinalsosagaston.R;
 import com.sosa.trabajofinalsosagaston.databinding.InmuebleDetalleFragmentBinding;
 import com.sosa.trabajofinalsosagaston.modelo.Inmueble;
+import com.sosa.trabajofinalsosagaston.ui.login.LoginViewModel;
 
 public class InmuebleDetalleFragment extends Fragment {
     private InmuebleDetalleFragmentBinding binding;
@@ -34,7 +35,7 @@ public class InmuebleDetalleFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = InmuebleDetalleFragmentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        mViewModel = new ViewModelProvider(this).get(InmuebleDetalleViewModel.class);
+        mViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InmuebleDetalleViewModel.class);;
 
 
 
@@ -43,7 +44,7 @@ public class InmuebleDetalleFragment extends Fragment {
             public void onChanged(Inmueble inmueble) {
 
                 binding.TVCodigoDI.setText("Codigo:\n"+inmueble.getIdInmueble());
-                binding.CBEstadoDI.setChecked(inmueble.isEstado());
+                binding.CBEstadoDI.setChecked(inmueble.isEstado()==1?false:true);
                 binding.TVAmbienteDI.setText("Ambientes:\n"+inmueble.getAmbientes());
                 binding.TVDireccionDI.setText("Dirección:\n"+inmueble.getDireccion());
                 binding.TVPrecioDI.setText("Precio:\n$"+inmueble.getPrecio());

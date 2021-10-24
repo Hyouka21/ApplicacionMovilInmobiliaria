@@ -17,6 +17,7 @@ import com.sosa.trabajofinalsosagaston.R;
 import com.sosa.trabajofinalsosagaston.databinding.InmuebleDetalleFragmentBinding;
 import com.sosa.trabajofinalsosagaston.databinding.InquilinoDetalleFragmentBinding;
 import com.sosa.trabajofinalsosagaston.modelo.Inquilino;
+import com.sosa.trabajofinalsosagaston.ui.login.LoginViewModel;
 
 public class InquilinoDetalleFragment extends Fragment {
 
@@ -32,7 +33,7 @@ public class InquilinoDetalleFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = InquilinoDetalleFragmentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        mViewModel = new ViewModelProvider(this).get(InquilinoDetalleViewModel.class);
+        mViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InquilinoDetalleViewModel.class);;
         mViewModel.getInquilino().observe(getViewLifecycleOwner(), new Observer<Inquilino>() {
             @Override
             public void onChanged(Inquilino inquilino) {

@@ -18,8 +18,10 @@ import android.view.ViewGroup;
 import com.sosa.trabajofinalsosagaston.R;
 import com.sosa.trabajofinalsosagaston.adapter.InquilinoAdapter;
 import com.sosa.trabajofinalsosagaston.modelo.Inmueble;
+import com.sosa.trabajofinalsosagaston.ui.login.LoginViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class InquilinoFragment extends Fragment {
     private RecyclerView RVInquilino;
@@ -35,7 +37,7 @@ public class InquilinoFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.inquilino_fragment, container, false);
         RVInquilino = (RecyclerView) root.findViewById(R.id.RVInquilino);
-        mViewModel = new ViewModelProvider(this).get(InquilinoViewModel.class);
+        mViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InquilinoViewModel.class);;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                 getContext(),
                 LinearLayoutManager.VERTICAL,
@@ -47,9 +49,9 @@ public class InquilinoFragment extends Fragment {
                 root.findViewById(R.id.TVIFEs).setVisibility(integer);
             }
         });
-        mViewModel.getLista().observe(getViewLifecycleOwner(), new Observer<ArrayList<Inmueble>>() {
+        mViewModel.getLista().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
             @Override
-            public void onChanged(ArrayList<Inmueble> inmuebles) {
+            public void onChanged(List<Inmueble> inmuebles) {
                 RVInquilino.setLayoutManager(linearLayoutManager);
                 inquilinoAdapter = new InquilinoAdapter(inmuebles,root,getLayoutInflater());
 

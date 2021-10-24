@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-        mViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        mViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MainActivityViewModel.class);
         iniciarHeader();
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -66,10 +66,12 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_perfil,R.id.nav_inmueble,R.id.nav_inquilino,R.id.nav_contrato,R.id.nav_logout)
                 .setOpenableLayout(drawer)
                 .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         binding.navView.getMenu().findItem(R.id.nav_logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                mViewModel.actualizarPerfil();
                 if(item.getItemId() == R.id.nav_logout){
                     Alerta alerta = new Alerta();
                     alerta.show(getSupportFragmentManager(),"about");
@@ -83,19 +85,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
 
     private void iniciarHeader(){
         NavigationView navigationView = binding.navView;
         View header = navigationView.getHeaderView(0);
-        ApiClient api = ApiClient.getApi();
-        Propietario p = api.obtenerUsuarioActual();
-        mViewModel.actualizarPerfil(p);
+
+
+        mViewModel.actualizarPerfil();
         mViewModel.getPropietario().observe(this, new Observer<Propietario>() {
             @Override
             public void onChanged(Propietario propietario) {
                 ImageView avatar = header.findViewById(R.id.ImgAvatar);
                 TextView nombre = header.findViewById(R.id.TVNombre);
                 TextView correo = header.findViewById(R.id.TVCorreo);
+
                 avatar.setImageResource(propietario.getAvatar());
                 nombre.setText(propietario.getNombre()+" "+propietario.getApellido());
                 correo.setText(propietario.getEmail());
