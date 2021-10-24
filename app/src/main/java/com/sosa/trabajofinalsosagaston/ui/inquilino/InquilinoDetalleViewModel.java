@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -51,7 +52,7 @@ public class InquilinoDetalleViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(Call<Inquilino> call, Throwable t) {
-
+                Toast.makeText(context, "Ocurrio un error inesperado"+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

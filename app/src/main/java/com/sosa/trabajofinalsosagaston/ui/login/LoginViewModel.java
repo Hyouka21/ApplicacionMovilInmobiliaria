@@ -128,7 +128,7 @@ public class LoginViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(Call<Propietario> call, Throwable t) {
-                Log.d("paso","aqui paso2"+t.getMessage());
+                Toast.makeText(context, "Ocurrio un error inesperado"+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -150,7 +150,7 @@ public class LoginViewModel extends AndroidViewModel {
             }
                 @Override
                 public void onFailure(Call<Token> call, Throwable t) {
-                    Log.d("paso3",t.getMessage());
+                    Toast.makeText(context, "Ocurrio un error inesperado"+t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
     }
@@ -181,7 +181,7 @@ public class LoginViewModel extends AndroidViewModel {
 
                 @Override
                 public void onFailure(Call<Propietario> call, Throwable t) {
-                    Log.d("paso", "aqui paso2" + t.getMessage());
+                    Toast.makeText(context, "Ocurrio un error inesperado"+t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

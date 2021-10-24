@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -54,7 +55,7 @@ public class ContratoDetalleViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(Call<Contrato> call, Throwable t) {
-
+                Toast.makeText(context, "Ocurrio un error inesperado"+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
 

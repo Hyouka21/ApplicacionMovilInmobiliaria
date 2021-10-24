@@ -57,7 +57,7 @@ public class InmuebleDetalleViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(Call<Inmueble> call, Throwable t) {
-                Toast.makeText(context, "Hubo un error al guardar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Ocurrio un error inesperado"+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -52,6 +52,19 @@ public class MainActivityViewModel extends AndroidViewModel {
                 if(response.isSuccessful()){
                     Log.d("exce3" ,response.code()+""+response.message());
                     propietario.postValue(response.body());
+                    Thread th = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(10000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            actualizarPerfil();
+
+                        }
+                    });
+                    th.start();
                 }
             }
 

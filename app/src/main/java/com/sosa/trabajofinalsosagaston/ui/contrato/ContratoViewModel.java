@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -66,7 +67,7 @@ public class ContratoViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(Call<List<Inmueble>> call, Throwable t) {
-                Log.d("excepcion" ,t.getMessage());
+                Toast.makeText(context, "Ocurrio un error inesperado"+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

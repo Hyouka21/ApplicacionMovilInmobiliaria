@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.icu.lang.UProperty;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -66,7 +67,7 @@ public class PagoViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(Call<List<Pago>> call, Throwable t) {
-
+                Toast.makeText(context, "Ocurrio un error inesperado"+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

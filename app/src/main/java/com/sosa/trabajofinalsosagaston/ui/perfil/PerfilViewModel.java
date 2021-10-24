@@ -70,7 +70,7 @@ public class PerfilViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(Call<Propietario> call, Throwable t) {
-
+                Toast.makeText(context, "Ocurrio un error inesperado"+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -96,7 +96,7 @@ public class PerfilViewModel extends AndroidViewModel {
             @Override
             public void onFailure(Call<Propietario> call, Throwable t) {
 
-                Toast.makeText(context, "hubo uno error al actualizar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Ocurrio un error inesperado"+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -71,13 +71,11 @@ public class MainActivity extends AppCompatActivity {
         binding.navView.getMenu().findItem(R.id.nav_logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                mViewModel.actualizarPerfil();
-                if(item.getItemId() == R.id.nav_logout){
+
                     Alerta alerta = new Alerta();
                     alerta.show(getSupportFragmentManager(),"about");
                     return true;
-                }else{
-                return false;}
+
             }
         });
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
