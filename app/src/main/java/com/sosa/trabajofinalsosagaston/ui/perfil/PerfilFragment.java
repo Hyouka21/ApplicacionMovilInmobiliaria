@@ -35,13 +35,13 @@ public class PerfilFragment extends Fragment {
         mViewModel.iniciar();
 
         //para referirme al view model que ya esta creado en la activity requireActivity()
-      // MainActivityViewModel  mView =new ViewModelProvider(requireActivity()).get(MainActivityViewModel.class);
+       MainActivityViewModel  mView =new ViewModelProvider(requireActivity()).get(MainActivityViewModel.class);
        // MainActivityViewModel  mView = new ViewModelProvider.AndroidViewModelFactory(requireActivity().getApplication()).create(MainActivityViewModel.class);
 
         mViewModel.getPropietario().observe(getViewLifecycleOwner(), new Observer<Propietario>() {
             @Override
             public void onChanged(Propietario propietario) {
-
+                mView.actualizarPerfil();
                 p=propietario;
                 binding.ETNombreP.setEnabled(false);
                 binding.ETApellidoP.setEnabled(false);
@@ -96,8 +96,6 @@ public class PerfilFragment extends Fragment {
                 p.setApellido(binding.ETApellidoP.getText().toString());
                 mViewModel.cambiar(p);
                 mViewModel.iniciar();
-
-            //    mView.actualizarPerfil();
 
 
             }

@@ -1,28 +1,78 @@
 package com.sosa.trabajofinalsosagaston.modelo;
 
+import static com.sosa.trabajofinalsosagaston.request.ApiClient.UrlBase;
+
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Inmueble implements Serializable {
 
     private int id;
     private String direccion;
-
-
-    private int ambientes;
+    //En falso significa que el innmueble no está disponible por alguna falla en el mismo.
+    private int estado;
+    private String imagen;
+    private int ambiente;
     private int latitud;
     private int longitud;
     private Propietario duenio;
     private double precio;
+    private int superficie;
     private int idPropietario;
-    //En falso significa que el innmueble no está disponible por alguna falla en el mismo.
-    private int estado=0;
+    private String imagenGuardar;
+
+    public int getSuperficie() {
+        return superficie;
+    }
+
+    public void setSuperficie(int superficie) {
+        this.superficie = superficie;
+    }
+
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdPropietario() {
+        return idPropietario;
+    }
+
+    public void setIdPropietario(int idPropietario) {
+        this.idPropietario = idPropietario;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getImagenGuardar() {
+        return imagenGuardar;
+    }
+
+    public void setImagenGuardar(String imagenGuardar) {
+        this.imagenGuardar = imagenGuardar;
+    }
+
+
 
 
     public Inmueble(int id, String direccion, int ambientes, int latitud, int longitud, Propietario duenio, double precio, int idpropietario, int estado) {
         this.id = id;
         this.direccion = direccion;
-        this.ambientes = ambientes;
+        this.ambiente = ambientes;
         this.latitud = latitud;
         this.longitud = longitud;
         this.duenio = duenio;
@@ -60,7 +110,7 @@ public class Inmueble implements Serializable {
         this.direccion = direccion;
 
 
-        this.ambientes = ambientes;
+        this.ambiente = ambientes;
         this.precio = precio;
         this.idPropietario = propietario;
         this.estado = estado;
@@ -97,11 +147,11 @@ public class Inmueble implements Serializable {
 
 
     public int getAmbientes() {
-        return ambientes;
+        return ambiente;
     }
 
     public void setAmbientes(int ambientes) {
-        this.ambientes = ambientes;
+        this.ambiente = ambientes;
     }
 
     public double getPrecio() {
@@ -129,7 +179,12 @@ public class Inmueble implements Serializable {
     }
 
     public String getImagen() {
-        return "http://www.secsanluis.com.ar/servicios/salon1.jpg";
+        if(imagen==null){
+            return "http://www.secsanluis.com.ar/servicios/salon1.jpg";
+        }
+        return "http://192.169.1.4:45455/"+imagen.replace("\\", "/");
+
+
     }
 
 
@@ -144,5 +199,23 @@ public class Inmueble implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Inmueble{" +
+                "id=" + id +
+                ", direccion='" + direccion + '\'' +
+                ", estado=" + estado +
+                ", imagen='" + imagen + '\'' +
+                ", ambiente=" + ambiente +
+                ", latitud=" + latitud +
+                ", longitud=" + longitud +
+                ", duenio=" + duenio +
+                ", precio=" + precio +
+                ", superficie=" + superficie +
+                ", idPropietario=" + idPropietario +
+                ", imagenGuardar=" + imagenGuardar +
+                '}';
     }
 }

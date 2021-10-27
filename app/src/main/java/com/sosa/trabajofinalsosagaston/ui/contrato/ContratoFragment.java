@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.sosa.trabajofinalsosagaston.MainActivityViewModel;
 import com.sosa.trabajofinalsosagaston.R;
 import com.sosa.trabajofinalsosagaston.adapter.ContratoAdapter;
 import com.sosa.trabajofinalsosagaston.modelo.Inmueble;
@@ -37,7 +38,7 @@ public class ContratoFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.contrato_fragment, container, false);
         RVContrato = (RecyclerView) root.findViewById(R.id.RVContrato);
-        mViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(ContratoViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(ContratoViewModel.class);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                 getContext(),
                 LinearLayoutManager.VERTICAL,

@@ -10,117 +10,126 @@
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="16dp"
         android:text="Informacion del Inmueble"
         android:textColor="#000000"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/TVCodigoDI"
-        android:layout_width="wrap_content"
+    <TableLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="84dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <TextView
-        android:id="@+id/TVAmbienteDI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.844"
-        app:layout_constraintStart_toEndOf="@+id/TVCodigoDI"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <TextView
-        android:id="@+id/TVDireccionDI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="88dp"
-        android:text="TextFild"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVCodigoDI" />
-
-    <TextView
-        android:id="@+id/TVTipoDI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="136dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVUsoDI" />
-
-    <CheckBox
-        android:id="@+id/CBEstadoDI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="44dp"
-        android:text="Disponible"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVPrecioDI" />
-
-    <ImageView
-        android:id="@+id/ImgVDI"
-        android:layout_width="210dp"
-        android:layout_height="117dp"
-        android:layout_marginBottom="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.87"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CBEstadoDI"
-        app:layout_constraintVertical_bias="0.944"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        tools:layout_editor_absoluteX="1dp">
 
-    <TextView
-        android:id="@+id/TVPrecioDI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="36dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVAmbienteDI" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="100dp"
+            android:textAlignment="center">
 
-    <TextView
-        android:id="@+id/TVUsoDI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="136dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVDireccionDI" />
+            <TextView
+                android:id="@+id/TVAmbienteDI"
+                android:layout_width="197dp"
+                android:layout_height="match_parent"
+
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/TVCodigoDI"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="100dp">
+
+            <TextView
+                android:id="@+id/TVTipoDI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/TVDireccionDI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="TextFild"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="100dp">
+
+            <TextView
+                android:id="@+id/TVPrecioDI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/TVUsoDI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="100dp">
+
+            <CheckBox
+                android:id="@+id/CBEstadoDI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Disponible"
+                android:textColor="#000000" />
+
+            <ImageView
+                android:id="@+id/ImgVDI"
+                android:layout_width="210dp"
+                android:layout_height="117dp"
+
+                tools:src="@tools:sample/avatars" />
+
+        </TableRow>
+    </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.sosa.trabajofinalsosagaston.MainActivityViewModel;
 import com.sosa.trabajofinalsosagaston.R;
 import com.sosa.trabajofinalsosagaston.databinding.ContratoDetalleFragmentBinding;
 import com.sosa.trabajofinalsosagaston.databinding.InquilinoDetalleFragmentBinding;
@@ -34,7 +35,7 @@ public class ContratoDetalleFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = ContratoDetalleFragmentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        mViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(ContratoDetalleViewModel.class);;
+        mViewModel = new ViewModelProvider(this).get(ContratoDetalleViewModel.class);
         mViewModel.getContrato().observe(getViewLifecycleOwner(), new Observer<Contrato>() {
             @Override
             public void onChanged(Contrato contrato) {

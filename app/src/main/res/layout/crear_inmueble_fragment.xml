@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout8"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.inmueble.CrearInmueble" >
+
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="50dp">
+
+            <EditText
+                android:id="@+id/ETDirrecionC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Direccion"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/ETAmbiente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Ambiente"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="50dp">
+
+            <EditText
+                android:id="@+id/ETSuperf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Superficie"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/ETLatitud"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Latitud"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="50dp">
+
+            <EditText
+                android:id="@+id/ETLongitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Longitud"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/ETPrecio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Precio"
+                android:inputType="number" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/BTCrear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crear Inmueble"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow" />
+
+    <TableLayout
+        android:id="@+id/tableRow"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:paddingBottom="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Tomar Foto"
+
+            />
+
+        <TextView
+            android:id="@+id/TVFotoE"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Sin foto guardada"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

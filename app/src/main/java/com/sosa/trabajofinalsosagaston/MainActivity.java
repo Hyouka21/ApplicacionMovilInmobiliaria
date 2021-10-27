@@ -58,12 +58,12 @@ public class MainActivity extends AppCompatActivity {
         });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-        mViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MainActivityViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
         iniciarHeader();
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_perfil,R.id.nav_inmueble,R.id.nav_inquilino,R.id.nav_contrato,R.id.nav_logout)
+                R.id.nav_home, R.id.nav_perfil,R.id.nav_inmueble,R.id.nav_inquilino,R.id.nav_contrato,R.id.nav_logout,R.id.nav_crearInmueble)
                 .setOpenableLayout(drawer)
                 .build();
 

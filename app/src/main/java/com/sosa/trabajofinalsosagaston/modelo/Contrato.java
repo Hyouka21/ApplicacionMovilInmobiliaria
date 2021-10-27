@@ -1,6 +1,9 @@
 package com.sosa.trabajofinalsosagaston.modelo;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class Contrato implements Serializable {
@@ -37,7 +40,21 @@ public class Contrato implements Serializable {
     }
 
     public String getFechaInicio() {
-        return fechaDesde;
+            String dia="";
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+            SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+            try {
+                Date d = dateFormat.parse(fechaDesde);
+
+                dia = formato.format(d);
+            } catch (
+                    ParseException e) {
+                e.printStackTrace();
+            }
+            return dia;
+
+
+
     }
 
     public void setFechaInicio(String fechaInicio) {
@@ -45,7 +62,18 @@ public class Contrato implements Serializable {
     }
 
     public String getFechaFin() {
-        return fechaHasta;
+        String dia="";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            Date d = dateFormat.parse(fechaHasta);
+
+            dia = formato.format(d);
+        } catch (
+                ParseException e) {
+            e.printStackTrace();
+        }
+        return dia;
     }
 
     public void setFechaFin(String fechaFin) {

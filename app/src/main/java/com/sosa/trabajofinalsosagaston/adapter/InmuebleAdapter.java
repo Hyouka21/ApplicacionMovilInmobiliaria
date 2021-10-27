@@ -49,9 +49,10 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.MiView
 
         Inmueble i = lista.get(position);
         holder.TVDetalle.setText((i.getDireccion() + "\n $" + i.getPrecio()));
+        Log.d("paso",i.getImagen());
         Glide.with(root.getContext())//contexto
                 .load(i.getImagen())//url de la imagen
-                .diskCacheStrategy(DiskCacheStrategy.ALL)// guarda en el cache
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .into(holder.imagen); // se encarga de setear la imagen
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

@@ -16,6 +16,7 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -25,13 +26,15 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 
 public class ApiClient {
-    private static final String UrlBase="https://192.169.1.4:45455/api/";
+    public static final String UrlBase="https://192.169.1.4:45455/api/";
     private static PostInterface postInterface;
 
     public static OkHttpClient.Builder getUnsafeOkHttpClient() {
@@ -111,11 +114,18 @@ public class ApiClient {
 
         @PUT("propietario/actualizar")
         Call<Propietario> actualizarPropietario(@Header("Authorization") String token,@Body Propietario propietario);
+
+
         @GET("propietario/obtenerusuario")
         Call<Propietario> obtenerUsuario(@Header("Authorization") String token);
         @FormUrlEncoded
         @POST("propietario/login")
         Call<Token> login(@Field("email") String email,@Field("clave") String clave);
+
+
+        @POST("inmueble/crear")
+        Call<Inmueble>crearInmueble(@Header("Authorization") String token, @Body Inmueble inmueble);
+
 
     }
 

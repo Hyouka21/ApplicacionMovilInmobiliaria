@@ -27,6 +27,7 @@ import com.sosa.trabajofinalsosagaston.R;
 
 import com.sosa.trabajofinalsosagaston.modelo.Propietario;
 import com.sosa.trabajofinalsosagaston.modelo.Token;
+import com.sosa.trabajofinalsosagaston.ui.contrato.ContratoViewModel;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        loginViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(LoginViewModel.class);
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         inicializar();
         loginViewModel.inicioAutomatico();
         loginViewModel.getTokenMD().observe(this, new Observer<Token>() {
@@ -110,6 +111,11 @@ public class Login extends AppCompatActivity {
                 && checkSelfPermission(android.Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED){
             requestPermissions(new String[]{Manifest.permission.CALL_PHONE},1000);
+        }
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.M
+                && checkSelfPermission(Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(new String[]{Manifest.permission.CAMERA},1000);
         }
     }
 

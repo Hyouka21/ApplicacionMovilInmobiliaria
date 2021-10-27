@@ -21,6 +21,7 @@ import com.sosa.trabajofinalsosagaston.R;
 import com.sosa.trabajofinalsosagaston.adapter.InmuebleAdapter;
 import com.sosa.trabajofinalsosagaston.modelo.Inmueble;
 import com.sosa.trabajofinalsosagaston.request.ApiClient;
+import com.sosa.trabajofinalsosagaston.ui.contrato.ContratoViewModel;
 import com.sosa.trabajofinalsosagaston.ui.login.LoginViewModel;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class InmuebleFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.inmueble_fragment, container, false);
-        mViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InmuebleViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(InmuebleViewModel.class);
         RVInmueble = (RecyclerView) rootView.findViewById(R.id.RVInmueble);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(

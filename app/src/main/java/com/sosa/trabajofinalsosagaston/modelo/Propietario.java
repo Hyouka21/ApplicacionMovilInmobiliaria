@@ -1,5 +1,7 @@
 package com.sosa.trabajofinalsosagaston.modelo;
 
+import android.graphics.Bitmap;
+
 import androidx.annotation.NonNull;
 
 import com.sosa.trabajofinalsosagaston.R;
@@ -17,6 +19,7 @@ public class Propietario implements Serializable {
     private String clave;
     private String telefono;
     private int avatar;
+
 
     public Propietario(){}
     public Propietario(int id, String dni, String nombre, String apellido, String email, String clave, String telefono, int avatar) {

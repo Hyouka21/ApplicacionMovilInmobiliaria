@@ -43,7 +43,7 @@ public class InmuebleDetalleViewModel extends AndroidViewModel {
     }
     public void guardarCambios(boolean cheak){
 
-        i.setEstado(cheak?1:0);
+        i.setEstado(cheak?0:1);
         SharedPreferences sp = context.getSharedPreferences("datos",0);
         String token = sp.getString("token","-1");
         Call<Inmueble> inm = ApiClient.getMyApiClient().actualizarInmueble(token, i.getIdInmueble(), i.isEstado());

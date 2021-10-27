@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import com.sosa.trabajofinalsosagaston.R;
 import com.sosa.trabajofinalsosagaston.adapter.InquilinoAdapter;
 import com.sosa.trabajofinalsosagaston.modelo.Inmueble;
+import com.sosa.trabajofinalsosagaston.ui.contrato.ContratoViewModel;
 import com.sosa.trabajofinalsosagaston.ui.login.LoginViewModel;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class InquilinoFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.inquilino_fragment, container, false);
         RVInquilino = (RecyclerView) root.findViewById(R.id.RVInquilino);
-        mViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InquilinoViewModel.class);;
+        mViewModel = new ViewModelProvider(this).get(InquilinoViewModel.class);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                 getContext(),
                 LinearLayoutManager.VERTICAL,

@@ -90,6 +90,8 @@ public class PerfilViewModel extends AndroidViewModel {
                 if(response.isSuccessful()){
                     propietario.postValue(response.body());
                     Toast.makeText(context, "Se Modifico con exito", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(context, "No se pudo modificar", Toast.LENGTH_SHORT).show();
                 }
             }
 

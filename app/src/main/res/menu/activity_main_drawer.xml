@@ -19,6 +19,11 @@
             android:title="@string/inmuebles"
             />
         <item
+            android:id="@+id/nav_crearInmueble"
+            android:icon="@drawable/iconoinmueble"
+            android:title="@string/crear_inmueble"
+            />
+        <item
             android:id="@+id/nav_inquilino"
             android:icon="@drawable/iconoinquilino"
             android:title="@string/inquilinos"
@@ -29,10 +34,12 @@
             android:icon="@drawable/iconocontrato"
             android:title="@string/contratos"
             />
+
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/iconologout"
             android:title="@string/cerrar_sesion"
             />
+
     </group>
 </menu>

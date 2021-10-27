@@ -20,6 +20,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.sosa.trabajofinalsosagaston.R;
 import com.sosa.trabajofinalsosagaston.databinding.InmuebleDetalleFragmentBinding;
 import com.sosa.trabajofinalsosagaston.modelo.Inmueble;
+import com.sosa.trabajofinalsosagaston.ui.contrato.ContratoViewModel;
 import com.sosa.trabajofinalsosagaston.ui.login.LoginViewModel;
 
 public class InmuebleDetalleFragment extends Fragment {
@@ -35,8 +36,7 @@ public class InmuebleDetalleFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = InmuebleDetalleFragmentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        mViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InmuebleDetalleViewModel.class);;
-
+        mViewModel =  new ViewModelProvider(this).get(InmuebleDetalleViewModel.class);
 
 
         mViewModel.getInmueble().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
